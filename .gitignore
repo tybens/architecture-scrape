@@ -1,0 +1,9 @@
+# python cache-ing
+**/.ipynb_checkpoints/
+**/__pycache__/
+
+# environment
+.env
+
+# logs
+**/*.log
