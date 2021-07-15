@@ -1,0 +1,6 @@
+pandas
+pyhunter
+decouple
+selenium
+bs4
+cfscrape
