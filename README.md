@@ -1,6 +1,6 @@
 # Web scraping architecture, lighting, design, manufacturing companies / firms
 
-My summer project and partnership with CA2L in Barcelona. 
+My summer project with CA2L in Barcelona. 
 
 ## Setup
 
