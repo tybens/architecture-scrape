@@ -7,3 +7,6 @@
 
 # logs
 **/*.log
+
+# personal
+web_scrape.ipynb
