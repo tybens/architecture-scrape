@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 from utils import extractEmail, extractEmailNormal
 
 
-def scrape(urls, writing, studios_we_care_about, hunter=None):
+def scrape(urls, writing, studios_we_care_about, hunter=False):
     """ This scrapes the www.dexigner.com/directory type pages for studio data
     
     
@@ -61,7 +61,7 @@ def scrape(urls, writing, studios_we_care_about, hunter=None):
                                 tele = "x"
                             addy = address[1].get_text().replace("Portugal", "")
                             
-                            if hunter is not None:
+                            if hunter is not False:
                                 email = extractEmail(web, hunter)
                             else: 
                                 email = extractEmailNormal(web)

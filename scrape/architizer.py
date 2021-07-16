@@ -97,10 +97,10 @@ def architizerSpecificFirm(url_ext, hunter):
 
 
 class Sel:
-    def __init__(self, COUNTRY, PROJECT):
+    def __init__(self, COUNTRY, PROJECT, PROJECTTYPE):
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(10)
-        self.base_url = f"https://www.architizer.com/firms/firm-location={COUNTRY}" if PROJECT else f"https://www.architizer.com/firms/project-location={COUNTRY}"
+        self.base_url = f"https://www.architizer.com/firms/firm-location={COUNTRY}{PROJECTTYPE}" if not PROJECT else f"https://www.architizer.com/firms/project-location={COUNTRY}{PROJECTTYPE}"
         self.verificationErrors = []
         self.accept_next_alert = True
     def scroll_scrape(self):
@@ -116,14 +116,14 @@ class Sel:
         return soup.find_all("a", class_="firm-name")
 
 
-def scrape(COUNTRY, PROJECT, writing=False, hunter=False):
+def scrape(COUNTRY, PROJECT, writing=False, hunter=False, PROJECTTYPE=""):
     
     if writing:
         file = open('temp.csv', 'a+')
         writer = csv.writer(file)
         writer.writerow(["Title", "Tele", "Email", "Web", "Addy", "Poblacion", "Type"])
     
-    sel = Sel(COUNTRY, PROJECT)
+    sel = Sel(COUNTRY, PROJECT, PROJECTTYPE)
     firms = sel.scroll_scrape()
     
     for i, firm in enumerate(firms):

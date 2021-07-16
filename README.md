@@ -9,12 +9,17 @@ Install dependencies
 python -m pip install -r requirements.txt
 ```
 
-## Example usage:
+## How to use:
 
-This script scrapes the architizer site and (because `-w=0`) doesn't write it to a file, instead prints.
+This command scrapes the (because `-a=at`) architizer site and (because `-w=0`) doesn't write it to a file, instead prints and (because `-ht=0`) doesn't use hunter.io to scrape for emails
 
 ```Bash
-python main.py -a=at -w=0
+python main.py -a=at -w=0 -ht=0
+```
+
+For additional options
+```Bash
+python main.py -h
 ```
 
 ## LIST OF ARCHITECTURE DATABASES (kinda organized in usefulness)

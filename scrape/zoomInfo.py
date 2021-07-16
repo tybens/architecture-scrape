@@ -6,12 +6,11 @@ from selenium import webdriver
 from utils import extractEmail, extractEmailNormal
 
 
-def get_soups():
-    base_url = "https://www.zoominfo.com/companies-search/location-spain-industry-lodging-resorts" # restaurants
+def get_soups(BASE_URL):
 
     driver = webdriver.Firefox()
     driver.implicitly_wait(10)
-    driver.get(base_url)
+    driver.get(BASE_URL)
 
     soups = []
 
@@ -36,7 +35,7 @@ def save_source(driver, soups):
     soups.append(BeautifulSoup(data))
 
 
-def scrape(writing=False, hunter=None, soups=None):
+def scrape(writing=False, hunter=False, soups=None):
     """ Scrapes zoominfo soups
     
     Parameters
@@ -54,7 +53,6 @@ def scrape(writing=False, hunter=None, soups=None):
         #writer.writerow(["Title", "Tele", "Email", "Web", "Addy", "Contact Source", "Type", "More Info"])
         
     if soups is None: return None
-    if hunter is None: return None
     
     i = 1
     for soup in soups:
@@ -71,9 +69,9 @@ def scrape(writing=False, hunter=None, soups=None):
 
             revenue = row.find('td', class_="tableRow_revenue").text
             employees = row.find('td', class_="tableRow_employees").text
-            try:
+            if hunter is not False:
                 email = extractEmail(web, hunter)
-            except:
+            else:
                 email = extractEmailNormal(web)
             data = [title, "", email, web, loc, "Zoominfo", companyType, f"revenue: {revenue}, employees: {employees}"]
             

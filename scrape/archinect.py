@@ -33,7 +33,7 @@ def scrapeSingle(url_ext, hunter):
         try:    
             email = contactDiv.find("span", class_="TagIcon Email").parent.a.get("href")[7:]
         except:
-            if hunter is not None:
+            if hunter is not False:
                 email = extractEmail(web, hunter)
             else: 
                 email = extractEmailNormal(web)
@@ -57,7 +57,7 @@ def scrapeSingle(url_ext, hunter):
                 'loc': "x",
                 }
 
-def scrape(writing=False, hunter=None, soups=None):
+def scrape(writing=False, hunter=False, soups=None):
     """ Encompasses archinect scrape for Ibiza
     
     Parameters
